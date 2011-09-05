@@ -11,7 +11,7 @@
 
     <groupId>com.googlecode.usc</groupId>
     <artifactId>filename-batch-converter-parent</artifactId>
-    <version>3.0.6-SNAPSHOT</version>
+    <version>3.0.7-SNAPSHOT</version>
     <name>Filename Batch Converter Application - Parent</name>
     <packaging>pom</packaging>
     <description>Filename Batch Converter Application - Parent</description>
@@ -228,7 +228,7 @@
                 </executions>
             </plugin>
 
-<!--             <plugin>
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-gpg-plugin</artifactId>
                 <version>1.4</version>
@@ -241,7 +241,7 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin> -->
+            </plugin>
         </plugins>
 
         <extensions>
