@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+    <profiles>
+        <profile>
+            <id>nexus</id>
+            <repositories>
+                <repository>
+                    <id>nexus</id>
+                    <url>http://localhost:8080/nexus/content/groups/public/</url>
+                    <releases>
+                        <enabled>true</enabled>
+                    </releases>
+                    <snapshots>
+                        <enabled>true</enabled>
+                    </snapshots>
+                </repository>
+            </repositories>
+
+            <pluginRepositories>
+                <pluginRepository>
+                    <id>nexus</id>
+                    <url>http://localhost:8080/nexus/content/groups/public/</url>
+                    <releases>
+                        <enabled>true</enabled>
+                    </releases>
+                    <snapshots>
+                        <enabled>true</enabled>
+                    </snapshots>
+                </pluginRepository>
+            </pluginRepositories>
+        </profile>
+    </profiles>
+
+    <servers>
+        <server>
+            <id>proj-releases</id>
+            <username>admin</username>
+            <password>admin123</password>
+        </server>
+        <server>
+            <id>proj-snapshots</id>
+            <username>admin</username>
+            <password>admin123</password>
+        </server>
+
+        <server>
+            <id>usc-google-code-repo</id>
+            <username>your google email</username>
+            <password>your google code project password</password>
+        </server>
+        <server>
+            <id>usc-google-code-snapshot</id>
+            <username>your google email</username>
+            <password>your google code project password</password>
+        </server>
+        <server>
+            <id>sonatype-nexus-snapshots</id>
+            <username>your-jira-id</username>
+            <password>your-jira-pwd</password>
+        </server>
+        <server>
+            <id>sonatype-nexus-staging</id>
+            <username>your-jira-id</username>
+            <password>your-jira-pwd</password>
+        </server>
+    </servers>
+
+    <activeProfiles>
+        <activeProfile>nexus</activeProfile>
+    </activeProfiles>
+</settings>

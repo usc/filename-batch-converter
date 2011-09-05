@@ -1,0 +1,109 @@
+package org.usc.file.operater;
+
+/**
+ *
+ * @author ShunLi
+ */
+public class Test {
+    public final static String SVN_NO = "1120";
+    public static final String EMPTY = "";
+
+    public static void main(String[] args) {
+        String demo0 = "3.0.4.2.1-SNAPSHOT";
+        String demo1 = "3.0.4.2-SNAPSHOT";
+        String demo2 = "3.0.4-SNAPSHOT";
+        String demo3 = "3.0-SNAPSHOT";
+        String demo4 = "3.0.5";
+
+        parseReleaseVersion(demo0, demo1, demo2, demo3, demo4);
+
+    }
+
+    public static void parseReleaseVersion(String... versions) {
+        for (String version : versions) {
+            int snapshotIndex = version.lastIndexOf("-SNAPSHOT");
+
+            if (snapshotIndex > 0) {
+                version = version.substring(0, snapshotIndex);
+            }
+
+            String sampleVersion = "0.0.0." + SVN_NO;
+            String[] samplePart = sampleVersion.split("\\.");
+            String[] versionPart = version.split("\\.");
+
+            int minLength = versionPart.length;
+            minLength = minLength > samplePart.length ? samplePart.length : minLength;
+
+            System.arraycopy(versionPart, 0, samplePart, 0, minLength);
+
+
+            StringBuilder buf = new StringBuilder(samplePart.length  * 16);
+
+            for (int i = 0; i < samplePart.length ; i++) {
+                if (i > 0) {
+                    buf.append(".");
+                }
+                    buf.append(samplePart[i]);
+            }
+
+            System.out.println(buf.toString());
+
+        }
+    }
+
+
+    /*
+<plugin>
+    <groupId>org.codehaus.gmaven</groupId>
+    <artifactId>gmaven-plugin</artifactId>
+    <executions>
+        <execution>
+            <id>generate-version</id>
+            <phase>validate</phase>
+            <goals>
+                <goal>execute</goal>
+            </goals>
+            <configuration>
+                <source>
+                    project.properties['file.version'] = "${project.version}".substring(0, 5)
+
+                    version = "${project.version}"
+                    snapshotIndex = version.lastIndexOf("-SNAPSHOT")
+
+                    if (snapshotIndex > 0) {
+                    version = version.substring(0, snapshotIndex)
+                    }
+
+                    sampleVersion = "0.0.0"
+
+
+                    samplePart =
+                    sampleVersion.split("\\.");
+                    versionPart = version.split("\\.")
+
+                    minLength = versionPart.length;
+                    minLength = minLength > samplePart.length ? samplePart.length : minLength
+
+                    System.arraycopy(versionPart, 0, samplePart, 0, minLength)
+
+                    result = ""
+                    index =0;
+
+                    samplePart.each{
+                    if(index > 0){
+                    result = result + "."
+                    }
+                    result = result + it
+                    index++
+                    }
+                    println result
+
+                </source>
+            </configuration>
+        </execution>
+    </executions>
+</plugin>
+
+*/
+
+}

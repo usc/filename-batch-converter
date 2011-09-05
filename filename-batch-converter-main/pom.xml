@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.googlecode.usc</groupId>
+        <artifactId>filename-batch-converter-parent</artifactId>
+        <version>3.0.6-SNAPSHOT</version>
+        <relativePath>../filename-batch-converter-parent</relativePath>
+    </parent>
+    <artifactId>filename-batch-converter-main</artifactId>
+    <name>Filename Batch Converter Application - Main</name>
+    <packaging>jar</packaging>
+    <description>Filename Batch Converter Application - Main</description>
+
+    <dependencies>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <resources>
+            <!-- 仅包含version.properties并过滤 $ maven 属性 -->
+            <resource>
+                <directory>${basedir}/src/main/resources</directory>
+                <filtering>true</filtering>
+                <includes>
+                    <include>version.properties</include>
+                </includes>
+            </resource>
+            <!-- 继续添加资源，仅排除掉 version.properties，其它文件都不需要过滤 -->
+            <resource>
+                <directory>${basedir}/src/main/resources</directory>
+                <filtering>false</filtering>
+                <!-- <excludes> -->
+                <!-- <exclude>version.properties</exclude> -->
+                <!-- </excludes> -->
+            </resource>
+            <!-- 结合这两个resource，就可以拿到所有的resources文件，而且仅过滤version.properties文件，其它文件不过滤 -->
+        </resources>
+    </build>
+
+</project>

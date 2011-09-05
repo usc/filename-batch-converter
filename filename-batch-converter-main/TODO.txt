@@ -1,0 +1,62 @@
+﻿不支持正则表达式的替换（实际上如果你有兴趣的话也可以在这个的基础上进心加工，代码开源，可以下载或者 checkout），正则这块是我的痛啊，太不熟悉了，有时间，好好 follow 一下。
+是否支持单文件操作，目前是批处理文件夹及其子文件夹内的文件？
+是否需要保存上一次的配置参数？
+是否支持正则表达式的匹配和修改？
+还没有完成的，大致的想法是迁移到Maven项目，更多的使用 Apache common utils，比如 FileUtil，FileNameUtil，如果能支持正则就非常完美了。
+
+选了 文本框 或者 单选框 前面的 复选框(Rule)就选择了。
+
+maven的使用
+0.迁移到Maven project
+1.maven release plugin 发布版本
+2.google code maven 仓库
+3.自动打包成可运行的Jar 和 Exe文件（ <maven.deploy.skip>true</maven.deploy.skip> 应该要考虑这个，可以运行的jar和exe都不应该 deploy到仓库里）
+http://www.juvenxu.com/2011/08/05/infoq-maven-packag/
+
+4.重构代码 common-io,fileNameUtils,fileUtils.
+
+0,3 完成
+迁移实际上很简单，就是简单的构建一些基本的Maven project，可以使用Eclipse的Maven 插件（m2eclipse），或者直接使用maven archive type 构件就可以了
+
+如果不了解Maven的可以先学习一下，毕竟Maven差不多已经形成构建的标准了。
+
+可以new folder 仅供打成exe包使用，比如 splash image，ico图标等，这些并不会打到Jar包里，因为不在 resource(maven 默认资源文件夹，当然可以定制了)里面，
+这样应该可以减少 Jar 和 Exe 的大小（拿ico文件来说，如果放到 resources文件夹下，可能打成exe的时候，就多了 2 倍ico文件大小（jar一份，exe一份））
+
+
+拆分成几个其他的Module
+main,install,parent ..
+发布和部署
+发布站点
+Release 到 Google Code远程仓库，而不是本地建的远程仓库
+
+
+buildnumber-maven-plugin 取得last sumbit svn reversion 生成版本号
+org.codehaus.gmaven 使用 Groovy语法 截取版本前五位，e.g. 3.0.0-SNAPSHOT 为3.0.0
+
+
+maven-jar-plugin 如果单个project是没有问题的，但是如果有多个有 aggregate(聚合) project的时候就有问题了。
+
+Java 中获取Maven的版本，显示
+
+测试覆盖率
+发布站点
+
+把站点的report放到profile里面，节省一些不必要的构建，如果需要，激活它就是了
+尝试使用 properties 和 version maven plugin
+
+
+常用当不容易记得的命令
+mvn versions:set -DnewVersion=3.0.4-SNAPSHOT -f app-parent/pom.xml
+mvn release:prepare -DautoVersionSubmodules=true
+mvn release:rollback
+mvn release:perform
+
+
+maven3
+
+maven2 可能有些plugin运行没有效果，比如说 versions-plugin.
+
+部署到Google Code repo上面，进行远程共享访问 请见 maven in action笔记
+
+
