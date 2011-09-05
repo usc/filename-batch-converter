@@ -11,7 +11,7 @@
 
     <groupId>com.googlecode.usc</groupId>
     <artifactId>filename-batch-converter-parent</artifactId>
-    <version>3.0.7</version>
+    <version>3.0.7-SNAPSHOT</version>
     <name>Filename Batch Converter Application - Parent</name>
     <packaging>pom</packaging>
     <description>Filename Batch Converter Application - Parent</description>
@@ -23,9 +23,9 @@
         </license>
     </licenses>
     <scm>
-        <connection>scm:svn:http://usc.googlecode.com/svn/tags/filename-batch-converter-3.0.7/filename-batch-converter</connection>
-        <developerConnection>scm:svn:https://usc.googlecode.com/svn/tags/filename-batch-converter-3.0.7/filename-batch-converter</developerConnection>
-        <url>http://usc.googlecode.com/svn/tags/filename-batch-converter-3.0.7/filename-batch-converter</url>
+        <connection>scm:svn:http://usc.googlecode.com/svn/trunk/filename-batch-converter/</connection>
+        <developerConnection>scm:svn:https://usc.googlecode.com/svn/trunk/filename-batch-converter/</developerConnection>
+        <url>http://usc.googlecode.com/svn/trunk/filename-batch-converter/</url>
     </scm>
     <developers>
         <developer>
