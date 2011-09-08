@@ -23,9 +23,9 @@
         </license>
     </licenses>
     <scm>
-        <connection>scm:svn:http://usc.googlecode.com/svn/trunk/filename-batch-converter/</connection>
-        <developerConnection>scm:svn:https://usc.googlecode.com/svn/trunk/filename-batch-converter/</developerConnection>
-        <url>http://usc.googlecode.com/svn/trunk/filename-batch-converter/</url>
+        <connection>scm:git:git@github.com:usc/filename-batch-converter-main.git</connection>
+        <developerConnection>scm:git:git@github.com:usc/filename-batch-converter-main.git</developerConnection>
+        <url>git@github.com:usc/filename-batch-converter-main.git</url>
     </scm>
     <developers>
         <developer>
