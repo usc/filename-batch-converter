@@ -2,7 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.googlecode.usc</groupId>
+        <groupId>com.github.usc</groupId>
         <artifactId>filename-batch-converter-parent</artifactId>
         <version>3.0.10-SNAPSHOT</version>
         <relativePath>../filename-batch-converter-parent</relativePath>
@@ -46,6 +46,7 @@
                 </executions>
             </plugin>
 
+            <!-- TODO:buildnumber-maven-plugin not support Git,handle after. -->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>buildnumber-maven-plugin</artifactId>
@@ -59,8 +60,8 @@
                 </executions>
                 <configuration>
                     <doCheck>false</doCheck>
-                    <doUpdate>true</doUpdate>
-                    <!--<useLastCommittedRevision>true</useLastCommittedRevision>-->
+                    <doUpdate>false</doUpdate>
+                    <!--<useLastCommittedRevision>true</useLastCommittedRevision> -->
                     <revisionOnScmFailure>true</revisionOnScmFailure>
                 </configuration>
             </plugin>
@@ -155,12 +156,12 @@
                                 <originalFilename>${project.build.finalName}.exe</originalFilename>
                             </versionInfo>
 
-<!--                             <splash> -->
-<!--                                 <file>${basedir}/src/main/installer/batchConvert.bmp</file> -->
-<!--                                 <waitForWindow>true</waitForWindow> -->
-<!--                                 <timeout>60</timeout> -->
-<!--                                 <timeoutErr>false</timeoutErr> -->
-<!--                             </splash> -->
+                            <!-- <splash> -->
+                            <!-- <file>${basedir}/src/main/installer/batchConvert.bmp</file> -->
+                            <!-- <waitForWindow>true</waitForWindow> -->
+                            <!-- <timeout>60</timeout> -->
+                            <!-- <timeoutErr>false</timeoutErr> -->
+                            <!-- </splash> -->
 
                         </configuration>
                     </execution>

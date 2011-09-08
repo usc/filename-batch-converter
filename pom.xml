@@ -2,7 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.googlecode.usc</groupId>
+        <groupId>com.github.usc</groupId>
         <artifactId>filename-batch-converter-parent</artifactId>
         <version>3.0.10-SNAPSHOT</version>
         <relativePath>filename-batch-converter-parent</relativePath>
@@ -15,7 +15,8 @@
     <modules>
         <module>filename-batch-converter-parent</module>
         <module>filename-batch-converter-main</module>
-        <module>filename-batch-converter-install</module>
+        <!-- TODO: exculde install module first for buildnumber-maven-plugin and launch4j-plugin not work for Git -->
+        <!-- <module>filename-batch-converter-install</module> -->
     </modules>
 
 </project>

@@ -9,7 +9,7 @@
         <version>7</version>
     </parent>
 
-    <groupId>com.googlecode.usc</groupId>
+    <groupId>com.github.usc</groupId>
     <artifactId>filename-batch-converter-parent</artifactId>
     <version>3.0.10-SNAPSHOT</version>
     <name>Filename Batch Converter Application - Parent</name>
@@ -171,16 +171,17 @@
                 </configuration>
             </plugin>
 
-            <plugin>
+            <!-- TODO: handle for Git -->
+            <!-- <plugin>
                 <artifactId>maven-release-plugin</artifactId>
                 <version>2.0-beta-8</version>
                 <configuration>
-                    <tagBase>https://usc.googlecode.com/svn/tags/</tagBase>
-                    <branchBase>https://usc.googlecode.com/svn/branches/</branchBase>
-                    <goal>install</goal>
-                    <mavenExecutorId>forked-path</mavenExecutorId>
+                <tagBase>https://usc.googlecode.com/svn/tags/</tagBase>
+                <branchBase>https://usc.googlecode.com/svn/branches/</branchBase>
+                <goal>install</goal>
+                <mavenExecutorId>forked-path</mavenExecutorId>
                 </configuration>
-            </plugin>
+                </plugin> -->
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -229,20 +230,20 @@
                 </executions>
             </plugin>
 
-<!--             <plugin>
+            <!-- <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-gpg-plugin</artifactId>
                 <version>1.4</version>
                 <executions>
-                    <execution>
-                        <id>sign-artifacts</id>
-                        <phase>verify</phase>
-                        <goals>
-                            <goal>sign</goal>
-                        </goals>
-                    </execution>
+                <execution>
+                <id>sign-artifacts</id>
+                <phase>verify</phase>
+                <goals>
+                <goal>sign</goal>
+                </goals>
+                </execution>
                 </executions>
-            </plugin> -->
+                </plugin> -->
         </plugins>
 
         <extensions>

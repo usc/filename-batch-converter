@@ -47,7 +47,7 @@ Java 中获取Maven的版本，显示
 
 
 常用当不容易记得的命令
-mvn versions:set -DnewVersion=3.0.4-SNAPSHOT -f app-parent/pom.xml
+mvn versions:set -DnewVersion=3.0.4-SNAPSHOT -f filename-batch-converter-parent/pom.xml
 mvn release:prepare -DautoVersionSubmodules=true
 mvn release:rollback
 mvn release:perform
