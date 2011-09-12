@@ -10,7 +10,7 @@
 
     <groupId>com.github.usc</groupId>
     <artifactId>filename-batch-converter-parent</artifactId>
-    <version>3.0.12-SNAPSHOT</version>
+    <version>3.0.13-SNAPSHOT</version>
     <name>Filename Batch Converter Application - Parent</name>
     <packaging>pom</packaging>
     <description>Filename Batch Converter Application - Parent</description>
