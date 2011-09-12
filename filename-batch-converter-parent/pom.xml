@@ -2,7 +2,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <!-- method 3 use https://oss.sonatype.org/content/repositories -->
     <parent>
         <groupId>org.sonatype.oss</groupId>
         <artifactId>oss-parent</artifactId>
@@ -42,39 +41,7 @@
         </developer>
     </developers>
 
-    <!-- method 2 -->
-    <!-- <distributionManagement>
-        <repository>
-        <id>usc-google-code-repo</id>
-        <name>Google Code Repo for USC (releases)</name>
-        <url>svn:https://usc.googlecode.com/svn/maven-repo/releases</url>
-        <uniqueVersion>false</uniqueVersion>
-        </repository>
-        <snapshotRepository>
-        <id>usc-google-code-snapshot</id>
-        <name>Google Code Repo USC (snapshots)</name>
-        <url>svn:https://usc.googlecode.com/svn/maven-repo/snapshots</url>
-        <uniqueVersion>false</uniqueVersion>
-        </snapshotRepository>
-        </distributionManagement> -->
-
-    <!-- method 1 -->
-    <!-- <distributionManagement>
-        <repository>
-        <id>usc-google-code-repo</id>
-        <name>Google Code Repo for USC (releases)</name>
-        <url>dav:https://usc.googlecode.com/svn/maven-repo/releases</url>
-        <uniqueVersion>false</uniqueVersion>
-        </repository>
-        <snapshotRepository>
-        <id>usc-google-code-snapshot</id>
-        <name>Google Code Repo USC (snapshots)</name>
-        <url>dav:https://usc.googlecode.com/svn/maven-repo/snapshots</url>
-        <uniqueVersion>false</uniqueVersion>
-        </snapshotRepository>
-        </distributionManagement> -->
-
-    <!-- method 0 -->
+    <!-- local -->
     <!-- <distributionManagement>
         <site>
         <id>website</id>
@@ -175,12 +142,12 @@
             <plugin>
                 <artifactId>maven-release-plugin</artifactId>
                 <version>2.0-beta-9</version>
-<!--                 <configuration> -->
-<!--                     <tagBase>https://usc.googlecode.com/svn/tags/</tagBase> -->
-<!--                     <branchBase>https://usc.googlecode.com/svn/branches/</branchBase> -->
-<!--                     <goal>install</goal> -->
-<!--                     <mavenExecutorId>forked-path</mavenExecutorId> -->
-<!--                 </configuration> -->
+                <!-- <configuration> -->
+                <!-- <tagBase>https://usc.googlecode.com/svn/tags/</tagBase> -->
+                <!-- <branchBase>https://usc.googlecode.com/svn/branches/</branchBase> -->
+                <!-- <goal>install</goal> -->
+                <!-- <mavenExecutorId>forked-path</mavenExecutorId> -->
+                <!-- </configuration> -->
             </plugin>
 
             <plugin>
@@ -203,61 +170,7 @@
                 <artifactId>versions-maven-plugin</artifactId>
                 <version>1.2</version>
             </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-source-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>attach-sources</id>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-javadoc-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>attach-javadocs</id>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-
-            <!-- <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-gpg-plugin</artifactId>
-                <version>1.4</version>
-                <executions>
-                <execution>
-                <id>sign-artifacts</id>
-                <phase>verify</phase>
-                <goals>
-                <goal>sign</goal>
-                </goals>
-                </execution>
-                </executions>
-                </plugin> -->
         </plugins>
-
-        <extensions>
-            <extension>
-                <groupId>org.apache.maven.wagon</groupId>
-                <artifactId>wagon-webdav</artifactId>
-                <version>1.0-beta-2</version>
-            </extension>
-            <extension>
-                <groupId>org.jvnet.wagon-svn</groupId>
-                <artifactId>wagon-svn</artifactId>
-                <version>1.9</version>
-            </extension>
-        </extensions>
     </build>
 
     <profiles>
@@ -281,6 +194,32 @@
                                 <phase>verify</phase>
                                 <goals>
                                     <goal>sign</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-source-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>attach-sources</id>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-javadoc-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>attach-javadocs</id>
+                                <goals>
+                                    <goal>jar</goal>
                                 </goals>
                             </execution>
                         </executions>
