@@ -11,11 +11,11 @@
 
     <groupId>com.github.usc</groupId>
     <artifactId>filename-batch-converter-parent</artifactId>
-    <version>3.0.11-SNAPSHOT</version>
+    <version>3.0.12-SNAPSHOT</version>
     <name>Filename Batch Converter Application - Parent</name>
     <packaging>pom</packaging>
     <description>Filename Batch Converter Application - Parent</description>
-    <url>http://blogjava.net/lishunli</url>
+    <url>https://github.com/usc/filename-batch-converter</url>
     <licenses>
         <license>
             <name>Apache License,Version 2.0</name>
@@ -23,9 +23,9 @@
         </license>
     </licenses>
     <scm>
-        <connection>scm:git:git@github.com:usc/filename-batch-converter-main.git</connection>
-        <developerConnection>scm:git:git@github.com:usc/filename-batch-converter-main.git</developerConnection>
-        <url>git@github.com:usc/filename-batch-converter-main.git</url>
+        <connection>scm:git:git://github.com/usc/filename-batch-converter.git</connection>
+        <developerConnection>scm:git:git@github.com:usc/filename-batch-converter.git</developerConnection>
+        <url>git://github.com/usc/filename-batch-converter.git</url>
     </scm>
     <developers>
         <developer>
