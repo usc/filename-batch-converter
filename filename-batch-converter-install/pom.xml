@@ -4,7 +4,7 @@
     <parent>
         <groupId>com.github.usc</groupId>
         <artifactId>filename-batch-converter-parent</artifactId>
-        <version>3.0.12-SNAPSHOT</version>
+        <version>3.0.13-SNAPSHOT</version>
         <relativePath>../filename-batch-converter-parent</relativePath>
     </parent>
     <artifactId>filename-batch-converter-install</artifactId>
@@ -39,42 +39,50 @@
                         </goals>
                         <configuration>
                             <source>
-                                project.properties['file.version'] = "${project.version}".substring(0, 5)
-                           </source>
+
+
+                                version = "${project.version}"
+                                snapshotIndex = version.lastIndexOf("-SNAPSHOT")
+
+                                if (snapshotIndex > 0) {
+                                version = version.substring(0, snapshotIndex)
+                                }
+
+                                sampleVersion = "0.0.0"
+
+
+                                samplePart = sampleVersion.split("\\.");
+                                versionPart = version.split("\\.")
+
+                                minLength = versionPart.length;
+                                minLength =
+                                minLength > samplePart.length ? samplePart.length : minLength
+
+                                System.arraycopy(versionPart, 0, samplePart, 0, minLength)
+
+                                result = ""
+                                index =0;
+
+                                samplePart.each{
+                                if(index > 0){
+                                result = result + "."
+                                }
+                                result = result + it
+                                index++
+                                }
+
+                                project.properties['file.version'] = result
+                                <!-- println "result: " + "${file.version}" -->
+                            </source>
                         </configuration>
                     </execution>
                 </executions>
             </plugin>
 
-            <!-- TODO:buildnumber-maven-plugin not support Git,handle after. -->
-            <plugin>
+            <!-- TODO:buildnumber-maven-plugin although support Git, but get vesion log like b42f9b3edefd6bc65a628bfac4c3756cc9a1e479,is not digit.later processing. -->
+            <!-- <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>buildnumber-maven-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <phase>validate</phase>
-                        <goals>
-                            <goal>create</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <doCheck>false</doCheck>
-                    <doUpdate>false</doUpdate>
-                    <!--<useLastCommittedRevision>true</useLastCommittedRevision> -->
-                    <revisionOnScmFailure>true</revisionOnScmFailure>
-                </configuration>
-            </plugin>
-            <!--
-                <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>buildnumber-maven-plugin</artifactId>
-                <configuration>
-                <format>${file.version}.{0,number}</format>
-                <items>
-                <item>buildNumber0</item>
-                </items>
-                </configuration>
                 <executions>
                 <execution>
                 <phase>validate</phase>
@@ -83,8 +91,33 @@
                 </goals>
                 </execution>
                 </executions>
-                </plugin>
-            -->
+                <configuration>
+                <doCheck>false</doCheck>
+                <doUpdate>false</doUpdate>
+                <useLastCommittedRevision>true</useLastCommittedRevision>
+                <revisionOnScmFailure>true</revisionOnScmFailure>
+                </configuration>
+                </plugin> -->
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>buildnumber-maven-plugin</artifactId>
+                <configuration>
+                    <format>${file.version}.{0,number}</format>
+                    <items>
+                        <item>buildNumber0</item>
+                    </items>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>create</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
@@ -144,11 +177,13 @@
                             </jre>
 
                             <versionInfo>
-                                <fileVersion>${file.version}.${buildNumber}</fileVersion>
+                                <!-- <fileVersion>${file.version}.${buildNumber}</fileVersion> -->
+                                <fileVersion>${buildNumber}</fileVersion>
                                 <txtFileVersion>${project.version}</txtFileVersion>
                                 <fileDescription>${project.description}</fileDescription>
                                 <copyright>${project.developers[0].name}</copyright>
-                                <productVersion>${file.version}.${buildNumber}</productVersion>
+                                <!-- <productVersion>${file.version}.${buildNumber}</productVersion> -->
+                                <productVersion>${buildNumber}</productVersion>
                                 <txtProductVersion>${project.version}</txtProductVersion>
                                 <productName>${project.name}</productName>
                                 <companyName>${project.developers[0].organization}</companyName>

@@ -4,3 +4,4 @@
 target/
 *.releaseBackup
 release.properties
+buildNumber.properties
